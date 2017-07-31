@@ -17,7 +17,7 @@ This certificate usually has an -E after your name.
 -   Signing Certificate used to digatally sign emails and documents. 
 This certificate usually has an -S after your name.
 
--   Card Management Certificate which is not currently used at NIH. 
+-   Card Management Certificate. 
 This certificate is issued to PIV or PIV Users.
 
 The new 128K PIV Cards may also contain up to five of your prior encryption certificates to make it easier for you to read old encrypted emails. These certificates will have older expiration dates and may, or may not, have an -E after your name.
