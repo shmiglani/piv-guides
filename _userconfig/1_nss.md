@@ -9,16 +9,16 @@ permalink: userconfig/1_nss/
 ## Prerequisites
 
 1. Install NSS _certutil_ on your client machines: https://github.com/christian-korneck/firefox_add-certs/releases.
-2. Configure client machines for PIV login. <!--Link to Playbooks for PIV Login.-->
+2. Configure client machines for PIV login. <!--Add a link to Playbook for PIV Login when it has been added to IDM.gov.-->
 
 ## Create a Script To Distribute CA Certificates to NSS
 
 1. Using a domain controller, copy a CA certificate you wish to distribute into the NSS directory so that it is accessible via _\\fileserver\scripts$\comp_resources\nss\publicca.cer_.
 2. Open _gpmc.msc_. 
-3. Create and edit a GPO on a test _OU_ (i.e., your target). <!--Will this process be absolutely clear to the administrator? Is this to test whether the OU issue is fixed and CN is allowed?-->
+3. Create and edit a GPO on a test _OU_ (i.e., your target). <!--Will the administrator understand this? Add: "Create a test OU"? What is the purpose of the test OU?-->
 4. Navigate to _User Configuration\Policies\Windows Settings\Scripts\_. 
 5. Double-click on _Logon_ and then click on _Show files_.
-6. Create a new BAT file named _firefox_ca_add.bat_ that contains: <!--Is the BAT file the "script" the admin "added to the "/Startup/ directory" mentioned in Step 9? Explain "/Startup/ directory.-->
+6. Right-click and create a new BAT file named _firefox_ca_add.bat_ that contains: <!--Right-click on what, to do what? Is the BAT file the "script" the admin "added to the "/Startup/ directory" mentioned in Step 9? Explain "/Startup/ directory.-->
 
             if not exist "%appdata%\mozilla\firefox\profiles" goto:eof
             set profiledir=%appdata%\mozilla\firefox\profiles
