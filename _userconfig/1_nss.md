@@ -4,22 +4,21 @@ title: Automate the Distribution of CA Certificates into NSS
 collection: userconfig
 permalink: userconfig/1_nss/
 ---
-
-Organizations need to be able to automate the distribution of CA certificates into NSS for their enterprise configurations. <!--Tried to make the title simpler above. Does it make sense? Need an intro sentence. Don't see anything in this write-up that addresses LaChelle's comment about "Some of the intermediate CAs in the FPKI stop the CA name at OU rather than using a CN," which was one of the Listserv issues I sent you last night.  Also, LaChelle mentioned "enterprise configurations" in her initial comment on Issue 20. Can that be added in here somewhere?-->
+<!--Needs an intro sentence.-->
 
 ## Prerequisites
 
 1. Install NSS _certutil_ on your client machines: https://github.com/christian-korneck/firefox_add-certs/releases.
-2. Configure client machines for PIV login. <!--No instruction needed?-->
+2. Configure client machines for PIV login. <!--Link to Playbooks for PIV Login.-->
 
 ## Create a Script To Distribute CA Certificates to NSS
 
-1. Using a domain controller, copy a CA certificate you wish to distribute into the NSS <!--What directory name?-->directory so that it is accessible via _\\fileserver\scripts$\comp_resources\nss\publicca.cer_. <!--This is the directory path? Where does NSS come in?-->
+1. Using a domain controller, copy a CA certificate you wish to distribute into the NSS directory so that it is accessible via _\\fileserver\scripts$\comp_resources\nss\publicca.cer_.
 2. Open _gpmc.msc_. 
-3. Create and edit a GPO on a test _OU_ (i.e., your target). <!--Will this process be absolutely clear to the administrator? Is this to test whether OU issue is fixed and CN is allowed?-->
+3. Create and edit a GPO on a test _OU_ (i.e., your target). <!--Will this process be absolutely clear to the administrator? Is this to test whether the OU issue is fixed and CN is allowed?-->
 4. Navigate to _User Configuration\Policies\Windows Settings\Scripts\_. 
 5. Double-click on _Logon_ and then click on _Show files_.
-6. Right-click <!--On what?-->and create a new BAT file named _firefox_ca_add.bat_ that contains: <!--Is the BAT file the "script" the admin "added to the "/Startup/ directory" mentioned in Step 9? Explain "/Startup/ directory.-->
+6. Create a new BAT file named _firefox_ca_add.bat_ that contains: <!--Is the BAT file the "script" the admin "added to the "/Startup/ directory" mentioned in Step 9? Explain "/Startup/ directory.-->
 
             if not exist "%appdata%\mozilla\firefox\profiles" goto:eof
             set profiledir=%appdata%\mozilla\firefox\profiles
